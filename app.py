@@ -1,4 +1,5 @@
 from flask import Flask,request,  render_template
+
 from free import TextSimilarity
 app = Flask(__name__)
 
@@ -6,7 +7,7 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
-@app.route('/predict',methods=['POST'])
+@app.route('/calculate',methods=['POST'])
 def calculate():
     texts = [x for x in request.form.values()]
 
@@ -34,4 +35,4 @@ def calculate():
     return render_template('home.html',result_12=result_12 , result_23 = result_23 , result_13 = result_13)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
+    app.run()
