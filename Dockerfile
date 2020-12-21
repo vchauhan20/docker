@@ -1,10 +1,9 @@
-FROM python:3.7
-
-RUN pip install virtualenv
 FROM python:alpine3.7
-COPY . /app
+RUN mkdir /app
 WORKDIR /app
-RUN pip install -r requirements.txt
+COPY . /app
+RUN pip3 install -r requirements.txt
+RUN chmod +x *.py
+ENTRYPOINT ["/app/app.py"]
 EXPOSE 5000
-ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]
